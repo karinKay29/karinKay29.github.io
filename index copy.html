@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name= "description" content="Portforlio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karin's Portfolio</title>
+    <link rel="icon" type="image/png" href="img/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Single+Day&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+  
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+
+
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header__logo__title"><a href ="#home"> Hiramatsu Karin(Kyulim Kim)</a></div> 
+      <nav class="header__nav">
+      <ul class="header__menu">
+        <li><a class="header__menu__item active" href="#home">home</a></li>
+        <li><a class="header__menu__item" href="#about">about</a></li>
+        <li><a class="header__menu__item" href="#skills">skills</a></li>
+        <li><a class="header__menu__item" href="#work">work</a></li>
+        <li><a class="header__menu__item" href="#contact">contact</a></li>
+      </ul>
+    </nav>
+
+
+      <!-- Toggle button -->
+      <button class="header__toggle-btn" aria-label="navigation menu toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </header>
+
+    
+    <!-- Home -->
+    <section id="home">
+      <div class="home__container">
+        <!-- <img src="img/profile.jpg" alt="profile" class="home__avatar" /> -->
+        <h1 class="home__title">Hello, I am <span class ="auto_type" ></span></h1>        
+        <h2 class="home__description">常に新しさをデザインしながら成長しています。</h2>
+           
+        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+        <script>
+          var typed = new Typed(".auto_type", {
+            strings: [" Web Designer", "Web Coder"],
+            typeSpeed: 200,
+            backSpeed:200,
+            loop:true,
+            onComplete: function(self){
+              document.querySelector('.auto_type').class.add("neon");
+            },
+              preStringTyped: function(arrayPos, self) {
+
+      document.querySelector(".auto_type").classList.remove("neon");
+    }
+          });
+        </script>
+      </div>
+    </section>
+
+
+    <!-- About -->
+    <!-- profile section -->
+    
+
+
+  <section id="about" class="section section__container">
+      <div class="profile__section">
+        <img
+        src="img/profile.png"
+        alt="profile"
+        class="profile__img"
+      />
+
+
+      <div class="introduction">
+        <h2>ABOUT ME</h2>
+        <p>
+          小さな違いで感動を与えることができるウェブデザイナーを夢見ています。<br/>
+          UIUXデザインからバナー、広報物、ウェブコーディングまで人間スタートアップになるよう努力しています。<br>
+          アメリカと中国で留学して学んだすべての経験を最大限使って始めたことを最後までまともにする性格を持っています！<br>
+          私のすべての熱情と能力が多くの人々に役に立てればと思います :)
+        </p>
+
+
+        <div class="btn__container"> 
+           <a href="https://kaylin-kim.notion.site/kaylin-kim/1c27cbeae0b9486b883eeadb61ae053f"class="button btnPush">MORE</a>
+        </div>
+      </div>
+      </div>
+
+
+<!-- capability section -->
+
+<hr class="hr-how" />
+
+<div class="capability">
+
+  <h2>WHAT I CAN DO</h2>
+
+<ul class="majors">
+  <li class="major">
+    <img
+        src="img/figma.png"
+        alt="figma"
+        class="major__img"
+      />
+      <p class="major__title">Figma</p>
+  </li>
+<li class="major">
+  <img
+        src="img/photoshop.png"
+        alt="photoshop"
+        class="major__img"
+      />
+      <p class="major__title">Photoshop</p>
+</li>
+
+<li class="major">
+  <img
+        src="img/html.png"
+        alt="html"
+        class="major__img"
+      />
+      <p class="major__title">HTML</p>
+</li>
+
+<li class="major">
+  <img
+        src="img/css.png"
+        alt="css"
+        class="major__img"
+      />
+      <p class="major__title">CSS</p>
+</li>
+
+
+<li class="major">
+  <img
+        src="img/js.png"
+        alt="js"
+        class="major__img"
+      />
+      <p class="major__title">JS</p>
+</li>
+</ul>
+</div>
+    </section>
+
+
+
+
+
+    <!-- Skills-->
+    <section id="skills" class="section">
+      <div class="skills section__container">
+        <h2>SKILLS</h2>
+        <p>
+          サービスの方向性と目標に合致するデザイン試案を積極的に開発する能力を保有しています。 <br />
+          FIGMAを利用してワイヤフレームとプロトタイプを製作し、開発者との協業のためにコーディングを持続的に勉強しています </br>
+         
+        </p>
+
+    <div class="skillset">
+          <div class="skillset__left">
+            <h3 class="skillset__title">TOOLS</h3>
+            
+        
+    <!-- 스킬섹션 ( 스킬이름 + progress bar) -->
+
+
+          <!-- html + css -->
+            <div class="skill__section" data-percent="75%">
+              <div class="skill">
+                <div class="icon">
+                  <img
+                  src="img/htmlCSS.png"
+                  alt="html css"
+                  class="icon__img icon__transparent"
+                />
+                </div>
+                <div class="skill__info">
+                  <div class="skill__name">HTML/CSS</div>
+                  <div class="skill__percent">75%</div>
+                </div>
+                <div class="skill__progressbar">
+                  <div class="skill__progress"></div>
+                </div>
+              </div>
+            </div>
+
+          <!-- java script -->
+            <div class="skill__section" data-percent="40%">
+              <div class="skill">
+                <div class="icon">
+                  <img
+                  src="img/js.png"
+                  alt="js"
+                  class="icon__img"
+                />
+                </div>
+                <div class="skill__info">
+                  <div class="skill__name">Java Script</div>
+                  <div class="skill__percent">40%</div>
+                </div>
+                <div class="skill__progressbar">
+                  <div class="skill__progress"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- figma -->
+            <div class="skill__section" data-percent="85%">
+              <div class="skill">
+                <div class="icon">
+                  <img
+                  src="img/figma.png"
+                  alt="Figma"
+                  class="icon__img"
+                />
+                </div>
+                <div class="skill__info">
+                  <div class="skill__name">Figma</div>
+                  <div class="skill__percent">85%</div>
+                </div>
+                <div class="skill__progressbar">
+                  <div class="skill__progress"></div>
+                </div>
+              </div>
+            </div>
+
+           <!-- adobe XD -->
+            <div class="skill__section" data-percent="65%">
+              <div class="skill">
+                <div class="icon">
+                  <img
+                  src="img/adobeXD.png"
+                  alt="adobeXD"
+                  class="icon__img"
+                />
+                </div>
+                <div class="skill__info">
+                  <div class="skill__name">Adobe XD</div>
+                  <div class="skill__percent">65%</div>
+                </div>
+                <div class="skill__progressbar">
+                  <div class="skill__progress"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- photoshop -->
+            <div class="skill__section" data-percent="70%">
+              <div class="skill">
+                <div class="icon">
+                  <img
+                  src="img/photoshop.png"
+                  alt="photoshop"
+                  class="icon__img"
+                />
+                </div>
+                <div class="skill__info">
+                  <div class="skill__name">Photoshop</div>
+                  <div class="skill__percent">70%</div>
+                </div>
+                <div class="skill__progressbar">
+                  <div class="skill__progress"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 스킬 세트 카드, 언어능력 -->
+       
+      <div class="skillset__right">
+        <div class="skill__uxui">
+              <h3 class="skillset__title">UIUX DESIGN</h3> 
+              <ul class="card__list" >
+
+
+          
+                  <li class="skill__ability">
+                    <div class="item__img item__wrapper" data-modal="tool_modal">
+                      <svg  width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path  d="M302.083 114.583L385.417 197.917M62.5 437.5H145.833L416.667 166.667C427.717 155.616 433.926 140.628 433.926 125C433.926 109.372 427.717 94.384 416.667 83.3334C405.616 72.2827 390.628 66.0745 375 66.0745C359.372 66.0745 344.384 72.2827 333.333 83.3334L62.5 354.167V437.5Z" stroke="#545454" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path  d="M250 166.667L145.833 62.5L62.5 145.833L166.667 250M145.833 166.667L114.583 197.917M333.333 250L437.5 354.167L354.167 437.5L250 333.333M333.333 354.167L302.083 385.417" stroke="#545454" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <p class="skill__title">TOOL</p>
+                  </li>
+
+              
+            
+                  <li class="skill__ability">
+                    <div class="item__img item__wrapper" data-modal="research_modal">
+                      <svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M227.487 76.9977C227.487 68.4529 235.941 59 249.701 59C263.46 59 271.915 68.4529 271.915 76.9977C271.915 85.5426 263.46 94.9954 249.701 94.9954C235.941 94.9954 227.487 85.5426 227.487 76.9977ZM249.701 36C226.221 36 204.487 52.9603 204.487 76.9977C204.487 90.6187 211.466 101.967 221.787 109.245C199.44 119.742 183.967 142.452 183.967 168.775V174.877C183.967 184.93 192.117 193.081 202.171 193.081H297.233C307.287 193.081 315.437 184.93 315.437 174.877V168.775C315.437 164.87 315.097 161.044 314.444 157.325H385.592C394.59 157.325 401.884 164.62 401.884 173.618V204.048H364.002C347.846 204.048 334.531 216.21 332.713 231.878H327.929C326.111 216.21 312.796 204.048 296.64 204.048H202.762C186.606 204.048 173.291 216.21 171.474 231.878H166.689C164.872 216.21 151.556 204.048 135.401 204.048H42.5C25.103 204.048 11 218.151 11 235.548V258.119C11 275.516 25.103 289.619 42.5 289.619H135.401C152.798 289.619 166.901 275.516 166.901 258.119V254.878H171.262V258.119C171.262 275.515 185.365 289.619 202.762 289.619H236.509V291.647H202.762C185.365 291.647 171.262 305.75 171.262 323.147V346.612C171.262 364.008 185.365 378.112 202.762 378.112H242.371V380.14H203.738C186.341 380.14 172.238 394.243 172.238 411.64V433.317C172.238 450.714 186.341 464.817 203.738 464.817H296.639C314.036 464.817 328.139 450.714 328.139 433.317V411.64C328.139 394.243 314.036 380.14 296.639 380.14H265.371V378.112H296.64C314.037 378.112 328.14 364.009 328.14 346.612V323.147C328.14 305.75 314.037 291.647 296.64 291.647H259.509V289.619H296.64C314.037 289.619 328.14 275.516 328.14 258.119V254.878H332.502V258.119C332.502 275.516 346.605 289.619 364.002 289.619H456.903C474.299 289.619 488.403 275.516 488.403 258.119V235.548C488.403 218.151 474.299 204.048 456.903 204.048H424.884V173.618C424.884 151.917 407.292 134.325 385.592 134.325H305.698C299.004 123.468 289.24 114.704 277.616 109.244C287.936 101.966 294.915 90.6182 294.915 76.9977C294.915 52.9603 273.181 36 249.701 36ZM206.967 168.775C206.967 145.173 226.1 126.04 249.702 126.04C273.304 126.04 292.437 145.173 292.437 168.775V170.081H206.967V168.775ZM34 235.548C34 230.853 37.8056 227.048 42.5 227.048H135.401C140.095 227.048 143.901 230.853 143.901 235.548V258.119C143.901 262.813 140.095 266.619 135.401 266.619H42.5C37.8056 266.619 34 262.813 34 258.119V235.548ZM202.762 227.048C198.068 227.048 194.262 230.853 194.262 235.548V258.119C194.262 262.813 198.068 266.619 202.762 266.619H296.64C301.334 266.619 305.14 262.813 305.14 258.119V235.548C305.14 230.853 301.334 227.048 296.64 227.048H202.762ZM194.262 323.147C194.262 318.452 198.068 314.647 202.762 314.647H296.64C301.334 314.647 305.14 318.452 305.14 323.147V346.612C305.14 351.306 301.334 355.112 296.64 355.112H202.762C198.068 355.112 194.262 351.306 194.262 346.612V323.147ZM203.738 403.14C199.044 403.14 195.238 406.945 195.238 411.64V433.317C195.238 438.011 199.044 441.817 203.738 441.817H296.639C301.333 441.817 305.139 438.011 305.139 433.317V411.64C305.139 406.945 301.333 403.14 296.639 403.14H203.738ZM355.502 235.548C355.502 230.853 359.307 227.048 364.002 227.048H456.903C461.597 227.048 465.403 230.853 465.403 235.548V258.119C465.403 262.813 461.597 266.619 456.903 266.619H364.002C359.307 266.619 355.502 262.813 355.502 258.119V235.548Z" fill="#545454"/>
+                        </svg>                   
+                    </div>  
+                      <p class="skill__title">RESEARCH </p>
+                  </li>
+
+            
+            
+
+              
+
+                  <li class="skill__ability">
+                    <div class="item__img item__wrapper" data-modal="ux_modal">
+                      <svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 70C8 57.8498 17.8497 48 30 48H469.959C482.109 48 491.959 57.8497 491.959 70V429.194C491.959 441.344 482.109 451.194 469.959 451.194H30C17.8497 451.194 8 441.344 8 429.194V70ZM38 78V120.997H461.959V78H38ZM38 421.194V150.997H461.959V421.194H38ZM65.942 109.649C72.1534 109.649 77.1888 104.428 77.1888 97.987C77.1888 91.5461 72.1534 86.3247 65.942 86.3247C59.7307 86.3247 54.6953 91.5461 54.6953 97.987C54.6953 104.428 59.7307 109.649 65.942 109.649ZM108.884 97.987C108.884 104.428 103.849 109.649 97.6374 109.649C91.426 109.649 86.3906 104.428 86.3906 97.987C86.3906 91.5461 91.426 86.3247 97.6374 86.3247C103.849 86.3247 108.884 91.5461 108.884 97.987ZM129.333 109.649C135.544 109.649 140.579 104.428 140.579 97.987C140.579 91.5461 135.544 86.3247 129.333 86.3247C123.121 86.3247 118.086 91.5461 118.086 97.987C118.086 104.428 123.121 109.649 129.333 109.649ZM257.928 179.503C257.928 171.495 264.42 165.003 272.428 165.003H425.882C433.89 165.003 440.382 171.495 440.382 179.503V314.39C440.382 322.398 433.89 328.89 425.882 328.89H272.428C264.42 328.89 257.928 322.398 257.928 314.39V192.587L257.299 192.07L257.928 191.246V179.503ZM282.928 288.628V213.117L328.903 250.872L282.928 288.628ZM303.711 303.89L348.587 267.037L393.464 303.89H303.711ZM368.271 250.872L415.382 289.56V212.184L368.271 250.872ZM294.149 190.003L348.587 234.708L403.025 190.003H294.149ZM415.189 190.003L415.382 190.255V190.003H415.189ZM72.0767 345.798C64.897 345.798 59.0767 351.619 59.0767 358.798C59.0767 365.978 64.897 371.798 72.0767 371.798H429.927C437.107 371.798 442.927 365.978 442.927 358.798C442.927 351.619 437.107 345.798 429.927 345.798H72.0767ZM59.0767 396.966C59.0767 389.786 64.897 383.966 72.0767 383.966H429.927C437.107 383.966 442.927 389.786 442.927 396.966C442.927 404.146 437.107 409.966 429.927 409.966H72.0767C64.897 409.966 59.0767 404.146 59.0767 396.966ZM112.637 244.296C112.637 222.786 129.318 206.285 148.759 206.285C168.2 206.285 184.88 222.786 184.88 244.296C184.88 265.806 168.2 282.306 148.759 282.306C129.318 282.306 112.637 265.806 112.637 244.296ZM148.759 176.285C111.733 176.285 82.6373 207.252 82.6373 244.296C82.6373 281.339 111.733 312.306 148.759 312.306C185.785 312.306 214.88 281.339 214.88 244.296C214.88 207.252 185.785 176.285 148.759 176.285ZM72.8272 225.494C75.0137 227.602 75.0769 231.084 72.9683 233.271L58.7576 248.007L72.9683 262.742C75.0769 264.929 75.0137 268.411 72.8272 270.519C70.6407 272.628 67.1589 272.565 65.0503 270.378L47.8272 252.519C45.399 250.001 45.399 246.012 47.8272 243.494L65.0503 225.635C67.1589 223.448 70.6407 223.385 72.8272 225.494ZM221.482 235.391C219.373 233.205 219.437 229.723 221.623 227.614C223.81 225.506 227.291 225.569 229.4 227.755L246.623 245.615C249.051 248.133 249.051 252.121 246.623 254.639L229.4 272.498C227.291 274.685 223.81 274.748 221.623 272.64C219.437 270.531 219.373 267.049 221.482 264.863L235.693 250.127L221.482 235.391Z" fill="#545454"/>
+                        </svg>
+                                        
+                    </div>  
+                      <p class="skill__title">UX </p>
+                  </li>
+  
+  
+                  <li class="skill__ability">
+                    <div class="item__img item__wrapper" data-modal="ui_modal">
+                      <svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M218.75 62.5H93.75C76.4911 62.5 62.5 76.4911 62.5 93.75V322.917C62.5 340.176 76.4911 354.167 93.75 354.167H406.25C423.509 354.167 437.5 340.176 437.5 322.917V218.75" stroke="#545454" stroke-width="41.6667" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M250 354.167V437.5" stroke="#545454" stroke-width="41.6667" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M145.833 437.5H354.167" stroke="#545454" stroke-width="41.6667" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M370.79 70.9V112.37C370.79 120.95 369.837 127.667 367.93 132.52C366.11 137.287 362.643 140.797 357.53 143.05C352.417 145.303 344.963 146.43 335.17 146.43C327.977 146.43 321.91 145.693 316.97 144.22C312.03 142.66 308.087 139.757 305.14 135.51C302.28 131.263 300.85 125.283 300.85 117.57V70.9H324.25V112.63C324.25 117.223 324.467 120.733 324.9 123.16C325.42 125.5 326.547 127.32 328.28 128.62C330.013 129.833 332.657 130.44 336.21 130.44C338.377 130.44 340.413 130.223 342.32 129.79C344.227 129.357 345.527 128.707 346.22 127.84C347 126.8 347.39 123.03 347.39 116.53V70.9H370.79ZM383.261 70.9H406.661V145H383.261V70.9Z" fill="#545454"/>
+                        </svg>                                   
+                    </div>  
+                      <p class="skill__title">UI </p>
+                  </li>
+  
+
+           </ul>
+
+
+              <!-- 모달창 -->
+              <div class="modal" id="tool_modal">
+                <div class="modal__content">    
+                  <img src="img/modal_design1.jpg" alt="" >        
+                  <span class="close">&times;</span>
+                 
+                  <div class="modal__description">
+                  <h5>Tool Knowledge</h5>
+                <p> <strong>FIGMA</strong>と<strong>AdobeXD</strong>を使ってデザインが可能です</p>
+               
+                </div>
+                </div>
+              </div>
+
+              <div class="modal" id="research_modal">
+                <div class="modal__content">    
+                  <img src="img/modal_research.jpg" alt="" >        
+                  <span class="close">&times;</span>
+                 
+                  <div class="modal__description">
+                  <h5>Basic Research Skills</h5>
+                    <li>ユーザーペルソナ</li>
+                    <li>ユーザーフロー</li>
+                    <li>ユーザーインタビューが可能です</li>
+               
+                </div>
+                </div>
+              </div>
+
+
+              <div class="modal" id="ux_modal">
+                <div class="modal__content">    
+                  <img src="img/modal_ux.jpg" alt="" >        
+                  <span class="close">&times;</span>
+                 
+                  <div class="modal__description">
+                  <h5>UX Design Skill</h5>
+                    <li>ナビゲーションsデザイン</li>
+                    <li>スケッチ（アイデア）</li>
+                    <li>ワイヤフレーム製作</li>
+                    <li>プロトタイプ製作ができます。</li>
+
+               
+                </div>
+                </div>
+              </div>
+
+              <div class="modal" id="ui_modal">
+                <div class="modal__content">    
+                  <img src="img/modal_ui.jpg" alt="" >        
+                  <span class="close">&times;</span>
+                 
+                  <div class="modal__description">
+                  <h5>UI Design Skill</h5>
+                    <li>ビジュアルデザイン</li>
+                    <li>デザイン·システム</li>
+                    <li>タイポグラフィ</li>
+                    <li>グリッド/レイアウト/ビューポート</li>
+                    <li>モバイルuiデザイン</li>
+                    <li>スクリーンサイズ&デバイス</li>
+                    <li>反応型デザインが可能です。</li>
+                  <p>基本的なコーディングも可能です！</p>
+
+               
+                </div>
+                </div>
+              </div>
+
+        
+
+        </div>
+
+        <div class="language">
+            <h3 class="skillset__title">言語能力</h3>             
+          <div class="language__container">
+
+            <div class="row_1">
+                <div class="progress_card">
+                <div class="progress__circle">
+                  <div class =" progress__content">
+                    <h2 class="progText" data-count="100">0</h2>
+                  </div>
+                  <div class="progress"></div>
+              </div>
+              <h5>🇰🇷 韓国語</h5>
+              </div>
+
+              <div class="progress_card">
+                <div class="progress__circle">
+                  <div class ="progress__content">
+                    <h2 class="progText" data-count="85">0</h2>
+                  </div>
+                  <div class="progress"></div>
+              </div>
+              <h5>🇺🇸 英語</h5>
+              </div>
+
+            </div> <!--row1-->
+
+
+
+
+              <div class="row_2">
+                <div class="progress_card">
+                  <div class="progress__circle">
+                    <div class =" progress__content">
+                      <h2 class="progText" data-count="70">0</h2>
+                    </div>
+                    <div class="progress"></div>
+                </div>
+                <h5>🇯🇵 日本語</h5>
+                </div>
+  
+  
+  
+                <div class="progress_card">
+                  <div class="progress__circle">
+                    <div class =" progress__content">
+                      <h2 class="progText" data-count="35">0</h2>
+                    </div>
+                    <div class="progress"></div>
+                </div>
+                <h5>🇨🇳 中国語</h5>
+                </div>
+  
+                </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
+</section>
+
+
+
+    <!-- Work -->
+    <section id="work" class="section">
+
+        <h1>PROJECTS</h1>
+
+        <div class="categories">
+          <button class="category category__selected " data-filter="all" type="button">
+            All
+          </button>
+          <button class="category " data-filter="uxui" type="button">
+            UIUX    
+          </button>
+          <button class="category " data-filter="others" type="button">
+           OTHERS
+          </button>
+        </div>
+
+
+
+
+<ul class="projects">
+  <li class="project item__wrapper" data-modal="project1" data-type="uxui">
+    <div>
+      <a href="freelancer.html">
+      <img
+      src="img/uxui/uxui_laptop.png"
+      alt="uxui design_laptop"
+      class="project__img"
+    />
+    <div class="project__metadata" >
+      <h3>Global Freelancer Matching Site</h3>
+      <div class="tag-container" id="tagContainer">
+        <div class="tag" data-tag="figma"> #figma </div>
+        <div class="tag" data-tag="photoshop"> #photoshop </div>
+      </div>
+    </div>
+    </div>
+  </a>
+</li>
+
+
+<li class="project item__wrapper"  data-modal="project2" data-type="uxui">
+  <div>
+    <a href="grocery.html">
+    <img
+    src="img/uxui/groceryThumbnail.png"
+    alt="grocery App"
+    class="project__img"
+  />
+  <div class="project__metadata">
+    <h3>Grocery APP</h3>
+    <div class="tag-container" id="tagContainer">
+      <div class="tag" data-tag="figma"> #figma </div>
+      <div class="tag" data-tag="photoshop"> #photoshop </div>
+    </div>
+  </div>
+  </div>
+</a>
+</li>
+
+
+
+<li class="project item__wrapper" data-modal="project3" data-type="others">
+  <div class="project__container">
+    <img
+    src="img/banner/instaBanner1.png"
+    alt="instaBanner"
+    class="project__img"
+  />
+  <div class="project__metadata">
+    <h3>Instagram Banner Design</h3>
+
+    <div class="tag-container" id="tagContainer">
+      <div class="tag" data-tag="photoshop"> #photoshop </div>
+    </div>
+
+    </div>
+  </div>
+  </div>
+</li>
+
+
+<li class="project item__wrapper" data-modal="project4" data-type="others">
+  <div>
+    <img
+    src="img/banner/instaBanner2.png"
+    alt="instaBanner"
+    class="project__img"
+  />
+  <div class="project__metadata">
+    <h3>Instagram Banner Design</h3>
+    <div class="tag-container" id="tagContainer">
+        <div class="tag" data-tag="photoshop"> #photoshop </div>
+    </div>
+
+  </div>
+  </div>
+</li>
+
+
+<li class="project item__wrapper" data-modal="project5" data-type="others">
+  <div>
+    <img
+    src="img/banner/banner.png"
+    alt="web banner"
+    class="project__img"
+  />
+  <div class="project__metadata">
+    <h3>Web Banner</h3>
+    <div class="tag-container" id="tagContainer">
+      <div class="tag" data-tag="photoshop"> #photoshop </div>
+    </div>
+  </div>
+  </div>
+</li>
+
+
+<li class="project item__wrapper" data-modal="project6" data-type="others">
+  <div>
+    <img
+    src="img/banner/productPage.png"
+    alt="product page"
+    class="project__img"
+  />
+  <div class="project__metadata">
+    <h3>Product Page Design</h3>
+    <div class="tag-container" id="tagContainer">
+      <div class="tag" data-tag="photoshop"> #photoshop </div>
+     
+    </div>
+  </div>
+  </div>
+</li>
+
+<li class="project item__wrapper" data-modal="project7" data-type="others">
+  <div>
+    <a href="https://kaylinkk.github.io/tomoen_pf/">
+    <img
+    src="img/visu.png"
+    alt="product page"
+    class="project__img"
+  />
+  <div class="project__metadata">
+    <h3>Website Coding</h3>
+    <div class="tag-container" id="tagContainer">
+      <div class="tag" data-tag="html"> #html</div>
+      <div class="tag" data-tag="css"> #css </div>
+      <div class="tag" data-tag="javascript"> #javascript </div>
+     
+    </div>
+  </div>
+</a>
+  </div>
+</li>
+
+
+
+</ul>
+ 
+
+<!-- 프로젝트 모달 -->
+
+        
+  
+
+<div class="modal" id="project3">
+  <div class="modal__content project__modal">    
+    <img src="img/instaBanner.png" alt="" >        
+    <span class="close">&times;</span>
+  </div>
+</div>
+
+<div class="modal" id="project4">
+  <div class="modal__content project__modal">    
+    <img src="img/instaBanner3.png" alt="" >        
+    <span class="close">&times;</span>
+  </div>
+</div>
+
+<div class="modal" id="project5">
+  <div class="modal__content project__modal">    
+    <img src="img/detail_banner1.png" alt="" >        
+    <span class="close">&times;</span>
+  </div>
+</div>
+  
+<div class="modal" id="project6">
+  <div class="modal__content project__modal">    
+    <img src="img/bananaDetail.png" alt="" >        
+    <span class="close">&times;</span>
+  </div>
+</div>
+
+
+
+
+    </section>
+
+
+    <!-- contact  -->
+    <section id="contact" class="section">
+
+<div class ="footer__container">
+
+      <div class ="footer__row1">
+        <div class="logo__container">
+          <a href="#home">
+        <img
+  src="img/logo__portfolio.png"
+  alt="logo"
+  class="logo__footer"
+target="blank"
+
+/>
+</a>
+
+</div>
+      </div>
+
+
+
+<div class="footer__row2">
+<div class="contact__sns">
+<h3>GET IN TOUCH</h3>
+  <ul class="contact__links">
+    <li>
+      <a href="https://github.com/Kaylinkk" target="blank">
+        <i class="fab fa-github" title="github"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/_raylin_idyllic/" target="blank">
+        <i class="fab fa-instagram" title=" instagram"></i>
+      </a>
+      </li>
+    <li>
+      <a
+      href="https://www.youtube.com/channel/UCcW0dRvdVH7oLdzRXFePs3w"
+      target="blank"
+    >
+        <i class="fab fa-youtube" title=" youtube"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="contact__email">
+<h3>CONTACT ME</h3>
+  <h2>karinkaylin2218<br>@gmail.com</h2>
+</div>
+
+</div>
+
+</div>
+
+      <p class="copyright">2023 © Kay. All rights reserved.</p>
+    </section>
+
+   
+  </body>
+
+</html>

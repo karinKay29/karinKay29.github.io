@@ -1,23 +1,87 @@
 /* Global */
-@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
 
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,400i,600");
+
+// -------------------
 // breakpoint 변수 정의
+// -------------------
 $breakpoints: (
   sp: 480px,
   tab: 768px,
   pc: 1024px,
 );
 
+// -------------------
 // 미디어쿼리용 mixin
+// -------------------
 @mixin mq($device) {
   @if map-has-key($breakpoints, $device) {
     @media (max-width: map-get($breakpoints, $device)) {
       @content;
     }
-  } @else {
-    @warn "⚠️ '#{$device}' breakpoint는 정의되지 않았습니다.";
   }
 }
+
+// -------------------
+// View Helper
+// -------------------
+
+// SP 전용 <br> / 요소 (0 ~ 767px)
+.view_sp {
+  display: inline; // <br> 기본 display
+
+  // SP 영역에서만 보이기
+  @include mq(tab) {
+    display: inline;
+  }
+
+  // Tablet 이상 (768px 이상)에서는 숨기기
+  @media (min-width: map-get($breakpoints, tab)) {
+    display: none;
+  }
+}
+
+// Tablet + PC 전용
+.view_pc-tab {
+  display: none; // 기본값 숨김
+
+  // Tablet 이상에서 보이기
+  @media (min-width: map-get($breakpoints, tab)) {
+    display: block;
+  }
+}
+
+// PC 전용
+.view_pc {
+  display: none; // 기본값 숨김
+
+  // PC 이상에서 보이기
+  @media (min-width: map-get($breakpoints, pc)) {
+    display: block;
+  }
+}
+
+.txt_basic {
+  @include mq(sp) {
+    text-align: left;
+  }
+}
+
+.box {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.6s ease-in-out;
+}
+
+/* 스크롤 시 보여질 때 클래스 추가 */
+.box.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+// -----------------------
+// Responsive: 예시 SP/PC 조정
+// -----------------------
 
 :root {
   /* Color */
@@ -71,7 +135,7 @@ html {
 }
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins";
   cursor: default;
 }
 
@@ -124,26 +188,21 @@ a {
 ================================================== */
 
 .header {
-  background-color: transparent;
   position: fixed;
-  top: 0;
-  width: 100%;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%); // 중앙 정렬
+  width: 90%;
   transition: all var(--animation-duration) ease-in-out;
   z-index: 2;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border-radius: 2px 2px 30px 30px;
+  padding: 4px 0;
+  backdrop-filter: blur(10px); /* 글래스 모피즘 블러 */
+  background: rgba(255, 255, 255, 0.1); /* 반투명 배경 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
   @include mq(sp) {
-    margin-top: 1rem;
-  }
-
-  &--dark {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: var(--color-white);
-    @include mq(sp) {
-      padding: 1rem;
-      border-radius: 0;
-    }
+    padding: 1rem;
   }
 
   .header__con {
@@ -153,51 +212,83 @@ a {
     align-items: center;
     width: 90%;
     margin: auto;
-  }
-
-  &__logo__title {
-    a {
-      text-decoration: none;
-      color: var(--color-light-white);
-      font-family: "Pacifico", cursive;
-    }
-  }
-
-  &__menu {
-    display: flex;
-
-    @include mq(sp) {
-      position: fixed;
-      left: -100%;
-      top: 44px;
-      flex-direction: column;
-      gap: 0;
-      width: 100%;
-      text-align: center;
-      transition: 0.6s;
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    &__item {
-      padding: 8px 16px;
-      margin: 0 4px;
-      cursor: pointer;
-      transition: all 0.3s;
-      border-radius: 8px;
-
-      @include mq(sp) {
-        margin: 16px 0;
-      }
-      &:hover {
-        box-shadow: 0 0 5px #dda0dd, 0 0 15px #8a2be2, 0 0 25px #9400d3,
-          0 0 35px #ff00ff;
+    .header__logo__title {
+      a {
+        text-decoration: none;
+        color: var(--color-light-white);
+        font-family: "Pacifico", cursive;
+        @include mq(sp) {
+          font-size: 0.8rem;
+        }
       }
     }
+
+    .header__nav {
+      .header__menu {
+        display: flex;
+        gap: 0.5rem;
+
+        @include mq(sp) {
+          position: fixed;
+          top: 50px;
+          left: -100%; // 초기 화면 밖
+          width: 100%;
+          flex-direction: column;
+          gap: 16px;
+          padding: 1rem;
+          text-align: center;
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.12); // 글래스모피즘 배경
+          backdrop-filter: blur(12px);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          transition: all 0.4s ease-in-out;
+          z-index: 50;
+        }
+        &__item {
+          padding: 8px 16px;
+          border-radius: 12px;
+          cursor: pointer;
+          background: transparent; // 기본 투명
+          backdrop-filter: blur(0px); // 블러 없음
+          color: #fff;
+          transition: all 0.3s ease-in-out;
+          box-shadow: none;
+
+          @include mq(sp) {
+            margin: 16px 0;
+          }
+          &:hover {
+            background: rgba(255, 255, 255, 0.2); // 호버 시 유리 느낌
+            backdrop-filter: blur(12px); // 블러 적용
+            color: #f5f5f5; // 글씨 살짝 밝게
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); // 살짝 떠 있는 느낌
+          }
+        }
+      }
+      .header__menu.open {
+        @include mq(sp) {
+          left: 0;
+        }
+      }
+    }
   }
 
-  .header__menu.open {
-    @include mq(sp) {
-      left: 0;
+  .scroller {
+    height: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #8a2be2;
+    width: 100%;
+    transform: scale(0, 1);
+    transform-origin: left;
+    animation: scroller linear;
+    animation-timeline: scroll();
+  }
+  @keyframes scroller {
+    to {
+      transform: scale(1, 1);
     }
   }
 
@@ -208,9 +299,127 @@ a {
     font-size: 24px;
     display: none;
     @include mq(sp) {
-      top: 0;
       display: block;
       color: var(--color-light-white);
+      border: none;
+      background-color: transparent;
+    }
+  }
+}
+.header.light-bg {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%); // 중앙 정렬
+  width: 90%;
+  transition: all var(--animation-duration) ease-in-out;
+  z-index: 2;
+  padding: 4px 0;
+  backdrop-filter: blur(10px); /* 글래스 모피즘 블러 */
+  background: rgba(255, 255, 255, 0.1); /* 반투명 배경 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  @include mq(sp) {
+    padding: 1rem;
+  }
+
+  .header__con {
+    display: flex;
+    max-width: 1280px;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    .header__logo__title {
+      a {
+        text-decoration: none;
+        color: #333;
+        font-family: "Pacifico", cursive;
+        @include mq(sp) {
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .header__nav {
+      .header__menu {
+        display: flex;
+        gap: 0.5rem;
+
+        @include mq(sp) {
+          position: fixed;
+          top: 50px;
+          left: -100%; // 초기 화면 밖
+          width: 100%;
+          flex-direction: column;
+          gap: 16px;
+          padding: 1rem;
+          text-align: center;
+          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.12); // 글래스모피즘 배경
+          backdrop-filter: blur(12px);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          transition: all 0.4s ease-in-out;
+          z-index: 50;
+        }
+        &__item {
+          padding: 8px 16px;
+          border-radius: 12px;
+          cursor: pointer;
+          background: transparent; // 기본 투명
+          backdrop-filter: blur(0px); // 블러 없음
+          color: #333;
+          transition: all 0.3s ease-in-out;
+          box-shadow: none;
+
+          @include mq(sp) {
+            margin: 16px 0;
+          }
+          &:hover {
+            background: rgba(255, 255, 255, 0.2); // 호버 시 유리 느낌
+            backdrop-filter: blur(12px); // 블러 적용
+            color: #4a4a4a;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); // 살짝 떠 있는 느낌
+          }
+        }
+      }
+      .header__menu.open {
+        @include mq(sp) {
+          left: 0;
+        }
+      }
+    }
+  }
+
+  .scroller {
+    height: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #8a2be2;
+    width: 100%;
+    transform: scale(0, 1);
+    transform-origin: left;
+    animation: scroller linear;
+    animation-timeline: scroll();
+  }
+  @keyframes scroller {
+    to {
+      transform: scale(1, 1);
+    }
+  }
+
+  .header__toggle-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 24px;
+    display: none;
+    @include mq(sp) {
+      display: block;
+      color: #333;
       border: none;
       background-color: transparent;
     }
@@ -221,7 +430,7 @@ a {
   HOME
 ================================================== */
 #home {
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)),
+  background: linear-gradient(rgba(48, 48, 48, 0.3), rgba(0, 0, 0, 0.9)),
     url("img/background.jpg") center/cover no-repeat;
   text-align: center;
   width: 100%;
@@ -229,6 +438,10 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  @include mq(sp) {
+    background: linear-gradient(rgba(48, 48, 48, 0.3), rgba(0, 0, 0, 0.9)),
+      url("img/background_sp.jpg") center/cover no-repeat;
+  }
 
   .home__title,
   .home__description {
@@ -274,9 +487,14 @@ a {
   text-align: center;
   padding: 50px;
   margin: auto;
+  @include mq(tab) {
+    padding: 0;
+  }
+  @include mq(sp) {
+    padding: 0;
+  }
 
   &__container {
-    max-width: 1200px;
     margin: auto;
   }
 }
@@ -285,6 +503,10 @@ a {
    About - Profile
 ================================================== */
 
+#about {
+  background: linear-gradient(to bottom, #f2eff5, #eae6f2);
+}
+
 .profile__section {
   display: flex;
   flex-direction: row;
@@ -292,10 +514,24 @@ a {
   align-items: flex-start;
   margin: 100px;
 
+  @include mq(sp) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 24px;
+  }
+
   .profile__img {
     width: 300px;
     height: 300px;
     margin-right: 60px;
+    @include mq(tab) {
+      width: 200px;
+      height: 200px;
+      margin-right: 0;
+      transition: all 0.3s ease;
+    }
   }
 
   .introduction {

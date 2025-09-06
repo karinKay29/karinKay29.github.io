@@ -1,24 +1,20 @@
-//Make navbar transparent when it is on the top
-//Header 에 페이지 아래로 스크롤 시에 다크 스타일 적용
+//about섹션이 오면 글씨 색깔 어둡게 바꾸기
+
 const header = document.querySelector(".header");
-const headerHeight = header.offsetHeight;
-const headerLogo = document.querySelector(".header__logo");
+const aboutSection = document.querySelector("#about");
 
-function handleScroll() {
-  if (window.scrollY > headerHeight) {
-    header.classList.add("header--dark");
+window.addEventListener("scroll", () => {
+  if (window.scrollY >= aboutSection.offsetTop - 50) {
+    header.classList.add("light-bg");
   } else {
-    header.classList.remove("header--dark");
+    header.classList.remove("light-bg");
   }
-}
-document.addEventListener("scroll", handleScroll);
-
+});
 //Make home slowly fade to transparanet
 //Home 섹션을 아래로 스크롤 시 투명하게 처리
 
 const home = document.querySelector(".home__container");
 const homeHeight = home.offsetHeight;
-console.log(homeHeight);
 document.addEventListener("scroll", () => {
   home.style.opacity = 1 - window.scrollY / homeHeight;
 });
