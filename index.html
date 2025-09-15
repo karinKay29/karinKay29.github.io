@@ -33,32 +33,59 @@
     <script src="main.js" defer></script>
   </head>
   <body>
+    <button class="fab-progress" aria-label="Scroll progress">
+      <span class="fab-progress__pct">0%</span>
+    </button>
+
     <!-- Header -->
-    <header class="header">
+    <header class="header" data-header>
       <div class="header__con">
-        <div class="header__logo__title">
-          <a href="#home"> Hiramatsu Karin(Kyulim Kim)</a>
-        </div>
-        <nav class="header__nav">
-          <ul class="header__menu">
-            <li><a class="header__menu__item active" href="#home">home</a></li>
-            <li><a class="header__menu__item" href="#about">about</a></li>
-            <li><a class="header__menu__item" href="#skills">skills</a></li>
-            <li><a class="header__menu__item" href="#work">work</a></li>
-            <li><a class="header__menu__item" href="#contact">contact</a></li>
+        <a href="#home"><img src="/img/logo.png" alt="logo" /></a>
+
+        <!-- Desktop nav -->
+        <nav class="header__nav nav-desktop" aria-label="Primary">
+          <ul>
+            <li><a class="header__menu__item active" href="#home">HOME</a></li>
+            <li><a class="header__menu__item" href="#about">ABOUT</a></li>
+            <li><a class="header__menu__item" href="#skills">SKILLS</a></li>
+            <li><a class="header__menu__item" href="#work">WORKS</a></li>
+            <li><a class="header__menu__item" href="#contact">CONTACT</a></li>
           </ul>
         </nav>
-        <div class="scroller"></div>
-      </div>
 
-      <!-- Toggle button -->
-      <button class="header__toggle-btn" aria-label="navigation menu toggle">
-        <i class="fas fa-bars"></i>
-      </button>
+        <!-- Hamburger -->
+        <button
+          class="hamburger"
+          aria-label="navigation menu toggle"
+          aria-expanded="false"
+          aria-controls="mobileNav"
+          data-hamburger
+        >
+          <span class="hamburger-bar" aria-hidden="true"></span>
+          <span class="sr-only">メニュー開く</span>
+        </button>
+      </div>
     </header>
 
+    <!-- Mobile/Tablet dropdown nav -->
+    <nav
+      id="mobileNav"
+      class="nav-mobile"
+      aria-label="Mobile Primary"
+      hidden
+      data-mobile-nav
+    >
+      <ul>
+        <li><a class="header__menu__item" href="#home">HOME</a></li>
+        <li><a class="header__menu__item" href="#about">ABOUT</a></li>
+        <li><a class="header__menu__item" href="#skills">SKILLS</a></li>
+        <li><a class="header__menu__item" href="#work">WORKS</a></li>
+        <li><a class="header__menu__item" href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+
     <!-- Home -->
-    <section id="home">
+    <section id="home" data-theme="dark">
       <div class="home__container">
         <!-- <img src="img/profile.jpg" alt="profile" class="home__avatar" /> -->
         <h1 class="home__title">
@@ -84,7 +111,7 @@
     <!-- About -->
     <!-- profile section -->
 
-    <section id="about" class="section section__container">
+    <section id="about" class="section section__container" data-theme="light">
       <div class="profile__section">
         <img src="img/profile.png" alt="profile" class="profile__img" />
         <div class="introduction">
