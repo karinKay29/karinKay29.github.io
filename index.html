@@ -29,9 +29,9 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-
-    <script src="main.js" defer></script>
   </head>
+  <script defer src="/assets/i18n.js"></script>
+  <script src="/assets/main.js" defer></script>
   <body>
     <button class="fab-progress" aria-label="Scroll progress">
       <span class="fab-progress__pct">0%</span>
@@ -45,12 +45,52 @@
         <!-- Desktop nav -->
         <nav class="header__nav nav-desktop" aria-label="Primary">
           <ul>
-            <li><a class="header__menu__item active" href="#home">HOME</a></li>
-            <li><a class="header__menu__item" href="#about">ABOUT</a></li>
-            <li><a class="header__menu__item" href="#skills">SKILLS</a></li>
-            <li><a class="header__menu__item" href="#work">WORKS</a></li>
-            <li><a class="header__menu__item" href="#contact">CONTACT</a></li>
+            <li>
+              <a
+                class="header__menu__item active"
+                href="#home"
+                data-i18n="nav.home"
+                >HOME</a
+              >
+            </li>
+            <li>
+              <a class="header__menu__item" href="#about" data-i18n="nav.about"
+                >ABOUT</a
+              >
+            </li>
+            <li>
+              <a
+                class="header__menu__item"
+                href="#skills"
+                data-i18n="nav.skills"
+                >SKILLS</a
+              >
+            </li>
+            <li>
+              <a class="header__menu__item" href="#work" data-i18n="nav.works"
+                >WORKS</a
+              >
+            </li>
+            <li>
+              <a
+                class="header__menu__item"
+                href="#contact"
+                data-i18n="nav.contact"
+                >CONTACT</a
+              >
+            </li>
           </ul>
+
+          <!-- language toggle PC -->
+
+          <nav class="lang-switch" role="group" aria-label="Language">
+            <button class="lang-btn" data-lang="ja" data-i18n="ui.lang-ja">
+              日本語
+            </button>
+            <button class="lang-btn" data-lang="en" data-i18n="ui.lang-en">
+              English
+            </button>
+          </nav>
         </nav>
 
         <!-- Hamburger -->
@@ -76,12 +116,41 @@
       data-mobile-nav
     >
       <ul>
-        <li><a class="header__menu__item" href="#home">HOME</a></li>
-        <li><a class="header__menu__item" href="#about">ABOUT</a></li>
-        <li><a class="header__menu__item" href="#skills">SKILLS</a></li>
-        <li><a class="header__menu__item" href="#work">WORKS</a></li>
-        <li><a class="header__menu__item" href="#contact">CONTACT</a></li>
+        <li>
+          <a class="header__menu__item" href="#home" data-i18n="nav.home"
+            >HOME</a
+          >
+        </li>
+        <li>
+          <a class="header__menu__item" href="#about" data-i18n="nav.about"
+            >ABOUT</a
+          >
+        </li>
+        <li>
+          <a class="header__menu__item" href="#skills" data-i18n="nav.skills"
+            >SKILLS</a
+          >
+        </li>
+        <li>
+          <a class="header__menu__item" href="#work" data-i18n="nav.works"
+            >WORKS</a
+          >
+        </li>
+        <li>
+          <a class="header__menu__item" href="#contact" data-i18n="nav.contact"
+            >CONTACT</a
+          >
+        </li>
       </ul>
+      <!-- language toggle MOBILE-->
+      <div class="lang-switch is-mobile" role="group" aria-label="Language">
+        <button class="lang-btn" data-lang="ja" data-i18n="ui.lang-ja">
+          日本語
+        </button>
+        <button class="lang-btn" data-lang="en" data-i18n="ui.lang-en">
+          English
+        </button>
+      </div>
     </nav>
 
     <!-- Home -->
@@ -92,9 +161,7 @@
           Hello, <br class="view_sp" />
           I am <span class="auto_type neon"></span>
         </h1>
-        <h2 class="home__description">
-          常に新しさをデザインしながら成長しています。
-        </h2>
+        <h2 class="home__description" data-i18n="home.catch"></h2>
 
         <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
         <script>
@@ -109,62 +176,49 @@
     </section>
 
     <!-- About -->
-    <!-- profile section -->
 
-    <section id="about" class="section section__container" data-theme="light">
-      <div class="profile__section">
-        <img src="img/profile.png" alt="profile" class="profile__img" />
-        <div class="introduction">
-          <h2>ABOUT ME</h2>
-          <p class="txt_basic">
-            小さな違いで感動を与えることができるウェブデザイナーを夢見ています。<br />
-            UIUXデザインからバナー、広報物、ウェブコーディングまで人間スタートアップになるよう努力しています。<br />
-            アメリカと中国で留学して学んだすべての経験を最大限使って始めたことを最後までまともにする性格を持っています！<br />
-            私のすべての熱情と能力が多くの人々に役に立てればと思います :)
-          </p>
-
-          <div class="btn__container">
-            <a
-              href="https://kaylin-kim.notion.site/kaylin-kim/1c27cbeae0b9486b883eeadb61ae053f"
-              class="button btnPush"
-              >MORE</a
-            >
-          </div>
+    <section id="about" class="about section" data-theme="light">
+      <div class="section__container about__container">
+        <!-- 프로필 이미지 -->
+        <div class="about__img">
+          <img src="img/profile.png" alt="プロフィール写真" />
         </div>
-      </div>
 
-      <!-- capability section -->
+        <!-- 텍스트 블록 -->
+        <div class="about__text">
+          <h2 data-i18n="about.title">About Me</h2>
+          <p data-i18n="about.intro1"></p>
+          <p data-i18n="about.intro2"></p>
+          <p data-i18n="about.intro3"></p>
 
-      <hr class="hr-how" />
+          <!-- 키워드 태그 -->
+          <ul class="about__tags">
+            <li>#WebDesign</li>
+            <li>#Coding</li>
+            <li>#UIUX</li>
+            <li>#WordPress</li>
+          </ul>
 
-      <div class="capability">
-        <h2>WHAT I CAN DO</h2>
-
-        <ul class="majors">
-          <li class="major">
-            <img src="img/figma.png" alt="figma" class="major__img" />
-            <p class="major__title">Figma</p>
-          </li>
-          <li class="major">
-            <img src="img/photoshop.png" alt="photoshop" class="major__img" />
-            <p class="major__title">Photoshop</p>
-          </li>
-
-          <li class="major">
-            <img src="img/html.png" alt="html" class="major__img" />
-            <p class="major__title">HTML</p>
-          </li>
-
-          <li class="major">
-            <img src="img/css.png" alt="css" class="major__img" />
-            <p class="major__title">CSS</p>
-          </li>
-
-          <li class="major">
-            <img src="img/js.png" alt="js" class="major__img" />
-            <p class="major__title">JS</p>
-          </li>
-        </ul>
+          <!-- Works로 이동 CTA -->
+          <a href="#work" class="btn-cta light">
+            <span data-i18n="cta.seeWork"></span>
+            <svg
+              class="icon-arrow"
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="10 8 14 12 10 16"></polyline>
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
   </body>

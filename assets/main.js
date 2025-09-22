@@ -6,19 +6,59 @@
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
   /* ===== 1)  헤더 라이트 모드/ 다크모드 ===== */
-  (function () {
+  // (function () {
+  //   const header = document.querySelector(".header");
+  //   const sections = document.querySelectorAll("section[id][data-theme]");
+  //   const spNav = document.querySelector("#mobileNav"); // 변수명 통일
+
+  //   if (!header || !sections.length || !spNav) return;
+
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (!entry.isIntersecting) return;
+
+  //         const theme = entry.target.dataset.theme;
+  //         if (theme === "light") {
+  //           header.classList.add("light-bg");
+  //           spNav.classList.add("light-bg");
+  //         } else {
+  //           header.classList.remove("light-bg");
+  //           spNav.classList.remove("light-bg");
+  //         }
+  //       });
+  //     },
+  //     {
+  //       threshold: 0.1,
+
+  //       rootMargin: "-90px 0px 0px 0px",
+  //     }
+  //   );
+
+  //   sections.forEach((sec) => observer.observe(sec)); // ✅ observe 누락 보완
+  // })();
+
+  /* ===== 1)  헤더 라이트 모드/ 다크모드 ===== */
+  document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector(".header");
     const sections = document.querySelectorAll("section[id][data-theme]");
-    const spNav = document.querySelector("#mobileNav"); // 변수명 통일
+    const spNav = document.querySelector("#mobileNav");
 
-    if (!header || !sections.length || !spNav) return;
+    if (!header || !sections.length || !spNav) {
+      console.log("[theme] early exit", {
+        header: !!header,
+        sections: sections.length,
+        spNav: !!spNav,
+      });
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-
           const theme = entry.target.dataset.theme;
+          console.log(theme);
           if (theme === "light") {
             header.classList.add("light-bg");
             spNav.classList.add("light-bg");
@@ -30,13 +70,12 @@
       },
       {
         threshold: 0.1,
-
-        rootMargin: "-90px 0px 0px 0px",
+        rootMargin: "-90px 0px 0px 0px", // 헤더 높이만큼 위로 당김
       }
     );
 
-    sections.forEach((sec) => observer.observe(sec)); // ✅ observe 누락 보완
-  })();
+    sections.forEach((sec) => observer.observe(sec));
+  });
 
   /* ====== 스크롤 바 ====== */
   (() => {

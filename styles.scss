@@ -176,9 +176,9 @@ a {
   /* font sizes default */
   --font-large: 48px;
   --font-medium: 28px;
-  --font-regular: 18px;
-  --font-small: 16px;
-  --font-tiny: 14px;
+  --font-regular: 16px;
+  --font-small: 14px;
+  --font-tiny: 12px;
 
   /* weight */
   --weight-bold: 700;
@@ -208,13 +208,10 @@ $shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
 
 @include up(pc) {
   .nav-desktop {
-    display: block;
+    display: flex;
   }
   .hamburger {
     display: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
   }
   .nav-mobile {
     display: none !important;
@@ -233,12 +230,10 @@ $shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
     position: fixed;
     left: 0;
     right: 0;
-    top: var(--header-h); /* 헤더 바로 밑에서 시작 */
-    z-index: 101; /* 헤더보다 위로(헤더가 100이면 101로) */
+    top: var(--header-h);
+    z-index: 101;
     width: min(1100px, 95%);
     margin: 0 auto;
-
-    /* 닫힘 상태는 "완전 0"로 */
     max-height: 0;
     padding: 0;
     border: 0;
@@ -248,15 +243,12 @@ $shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
     transform: translateY(-8px);
     transition: max-height 0.25s ease, opacity 0.2s ease, transform 0.2s ease;
 
-    /* data-open="true" 일 때만 보이도록 */
     &[data-open="true"] {
-      max-height: 480px; /* 충분히 큰 값 */
+      max-height: 480px;
       padding: 1rem;
       opacity: 1;
       pointer-events: auto;
       transform: translateY(0);
-
-      /* 글래스모피즘 */
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       background: rgba(255, 255, 255, 0.1);
@@ -264,18 +256,14 @@ $shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
       border-radius: 1rem;
       li {
-        padding: 5px 0;
+        padding: 1rem 0;
         text-align: center;
       }
     }
 
-    /* hidden이어도 트랜지션 유지용 */
     &[hidden] {
       display: block;
-      max-height: 0;
-      opacity: 0;
-      pointer-events: none;
-    }
+    } // 트랜지션 유지용
   }
 }
 
@@ -381,46 +369,145 @@ $shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
   }
 }
 
+.lang-switch {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  margin-left: 1rem;
+
+  @include down(pc) {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+  .nav-mobile & {
+    padding: 12px 16px;
+  }
+
+  .lang-btn {
+    --glass-bg: rgba(255, 255, 255, 0.14);
+    --glass-border: rgba(255, 255, 255, 0.35);
+    --glass-shadow: rgba(0, 0, 0, 0.25);
+    --glass-text: #e0f7ff; // 다크에서 잘 보이는 연한 아쿠아
+    --neon: #dda0dd; // plum
+    --neon-soft: rgba(186, 85, 211, 0.5);
+
+    appearance: none;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    color: var(--glass-text);
+    padding: 0.45rem 0.9rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 24px var(--glass-shadow);
+    cursor: pointer;
+    transition: transform 0.08s ease, box-shadow 0.2s ease, background 0.2s ease,
+      color 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+    &:active {
+      transform: translateY(0);
+    }
+
+    // 🔹 focus-visible 한 번만
+    &:focus-visible {
+      outline: 2px solid var(--neon);
+      outline-offset: 3px;
+    }
+
+    &[aria-pressed="true"] {
+      --glass-bg: rgba(255, 255, 255, 0.22);
+      --glass-border: rgba(255, 255, 255, 0.7);
+      opacity: 1;
+      border-color: var(--neon);
+      // 다크에서는 네온을 조금 넓게 허용
+      box-shadow: 0 0 12px var(--neon-soft), 0 0 28px var(--neon-soft),
+        0 0 0 2px rgba(255, 255, 255, 0.12) inset;
+    }
+
+    &[aria-pressed="false"] {
+      opacity: 0.75;
+      cursor: default;
+    }
+
+    // disabled 보정: 색 보존
+    &:disabled {
+      color: var(--glass-text);
+      -webkit-text-fill-color: var(--glass-text);
+      opacity: 1;
+      filter: none;
+    }
+  }
+}
+
 /* =========================
    Light 테마 오버라이드 (색만 반전)
    .header에 .light-bg 클래스가 붙을 때 적용
 ========================= */
 .header.light-bg {
-  /* 헤더 컨테이너 배경/테두리만 라이트로 */
   .header__con {
-    background: rgba(255, 255, 255, 0.4); // 투명하게
-    backdrop-filter: blur(16px); // 블러 효과
-    -webkit-backdrop-filter: blur(16px); // 사파리 대응
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: #333;
     transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
 
-  /* 데스크탑 메뉴 링크 색상 반전 */
-  .nav-desktop ul li a {
-    color: #333;
-    &:hover {
-      background: rgba(255, 255, 255, 0.5);
-      color: #111;
+  .nav-desktop {
+    ul {
+      li {
+        a {
+          color: #333;
+          &:hover {
+            background: rgba(255, 255, 255, 0.5);
+            color: #111;
+          }
+        }
+      }
+    }
+    .lang-switch {
+      .lang-btn {
+        /* Glass 기본값 */
+        --glass-bg: rgba(
+          255,
+          255,
+          255,
+          0.6
+        ); /* 밝은 배경에 맞춰 투명도 조금 올림 */
+        --glass-border: rgba(90, 45, 140, 0.4); /* 퍼플 톤 보더 */
+        --glass-shadow: rgba(0, 0, 0, 0.1);
+        --glass-text: #3d2b4a; /* 어두운 퍼플-그레이, 고급스러운 텍스트 */
+
+        /* 네온 효과 색상 */
+        --neon: #c58de7; /* 라이트 퍼플 */
+        --neon-soft: rgba(197, 141, 231, 0.45);
+
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg);
+        color: var(--glass-text);
+        box-shadow: 0 4px 12px var(--glass-shadow);
+
+        &[aria-pressed="true"] {
+          border-color: var(--neon);
+          box-shadow: 0 0 3px var(--neon-soft),
+            /* 작은 내부 광택 */ 0 0 7px var(--neon-soft),
+            /* 바깥 은은한 네온 */ 0 0 0 1px rgba(255, 255, 255, 0.4) inset; /* 유리감 강조, 블랙 대신 화이트 톤 */
+          color: #4a2f5a; /* 활성화 시 짙은 퍼플 */
+        }
+      }
     }
   }
 
-  /* 햄버거 아이콘도 다크 → 라이트에 맞춰 어두운 막대 */
   .hamburger .hamburger-bar,
   .hamburger .hamburger-bar::before,
   .hamburger .hamburger-bar::after {
     background: #222;
-  }
-
-  /* 모바일 드롭다운 열렸을 때(글래스톤 라이트) */
-  @include down(pc) {
-    .nav-mobile[data-open="true"] {
-      background: rgba(255, 255, 255, 0.85);
-      border-color: rgba(0, 0, 0, 0.08);
-      a {
-        color: #222;
-      }
-    }
   }
 }
 
@@ -434,6 +521,35 @@ $shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
     border-color: rgba(0, 0, 0, 0.08);
     a {
       color: #222;
+    }
+    .lang-btn {
+      /* Glass 기본값 */
+      --glass-bg: rgba(
+        255,
+        255,
+        255,
+        0.6
+      ); /* 밝은 배경에 맞춰 투명도 조금 올림 */
+      --glass-border: rgba(90, 45, 140, 0.4); /* 퍼플 톤 보더 */
+      --glass-shadow: rgba(0, 0, 0, 0.1);
+      --glass-text: #3d2b4a; /* 어두운 퍼플-그레이, 고급스러운 텍스트 */
+
+      /* 네온 효과 색상 */
+      --neon: #c58de7; /* 라이트 퍼플 */
+      --neon-soft: rgba(197, 141, 231, 0.45);
+
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      color: var(--glass-text);
+      box-shadow: 0 4px 12px var(--glass-shadow);
+
+      &[aria-pressed="true"] {
+        border-color: var(--neon);
+        box-shadow: 0 0 3px var(--neon-soft),
+          /* 작은 내부 광택 */ 0 0 7px var(--neon-soft),
+          /* 바깥 은은한 네온 */ 0 0 0 1px rgba(255, 255, 255, 0.4) inset; /* 유리감 강조, 블랙 대신 화이트 톤 */
+        color: #4a2f5a; /* 활성화 시 짙은 퍼플 */
+      }
     }
   }
 }
@@ -545,134 +661,145 @@ $shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
 /* ==================================================
    About - Profile
 ================================================== */
-
 #about {
   background: linear-gradient(to bottom, #f2eff5, #eae6f2);
-}
 
-.profile__section {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 100px;
-
-  @include mq(sp) {
+  .about__container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: 0 24px;
-  }
-
-  .profile__img {
-    width: 300px;
-    height: 300px;
-    margin-right: 60px;
-    @include mq(tab) {
-      width: 200px;
-      height: 200px;
-      margin-right: 0;
-      transition: all 0.3s ease;
-    }
-  }
-
-  .introduction {
-    h2 {
-      margin: 34px 0;
-      font-size: 35px;
-    }
-    p {
-      font-size: 16px;
-    }
-  }
-}
-
-.btn__container {
-  padding-top: 42px;
-  display: flex;
-  justify-content: center;
-
-  .btnPush {
-    box-shadow: 0px 5px 0px 0px #cb8e00;
-    background: var(--color-main-yellow);
-
-    &:hover {
-      margin-top: 15px;
-      margin-bottom: 5px;
-      box-shadow: none;
-    }
-  }
-  a.button {
-    width: 120px;
-    padding: 0;
-    margin: 10px 20px 10px 0;
-    font-weight: 600;
-    text-align: center;
-    line-height: 50px;
-    color: #fff;
-    border-radius: 5px;
-    transition: all 0.2s;
-  }
-}
-
-.hr-how {
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0)
-  );
-  border: 0;
-  height: 1px;
-  margin-bottom: 40px;
-  margin-top: 40px;
-  overflow: visible;
-  text-align: center;
-  &::after {
-    background: white;
-    content: "AND";
-    display: inline-block;
-    font: "BodoniXT" !important;
-    font-size: 0.9em;
-    padding: 0 0.6em;
-    position: relative;
-    top: -0.7em;
-  }
-}
-
-.capability {
-  h2 {
-    font-size: 35px;
-    margin: 5rem 0;
-  }
-
-  .majors {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
-    margin: 1rem 0;
+    gap: 4rem;
+    padding: 100px;
+    max-width: 1100px;
 
-    .major {
-      background-color: #f7f8fa;
-      padding: 1.5rem 3rem;
-      border-radius: 1rem;
-      &__img {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 1rem;
-        transition: all 300ms ease;
+    @include down(tab) {
+      flex-direction: column;
+      align-items: center;
+      width: 90%;
+      padding: 3rem 0;
+      gap: 0;
+    }
+  }
+
+  .about__img {
+    max-width: 300px;
+    img {
+      width: 100%;
+      border-radius: 50%;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    @include down(tab) {
+      max-width: 60%;
+    }
+  }
+
+  .about__text {
+    flex: 1;
+    color: var(--color-dark-blue-grey);
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      line-height: 1.8;
+      @include down(tab) {
+        text-align: left;
       }
-      &__title {
-        font-size: 1.5rem;
-        font-weight: bold;
-        margin-bottom: 8px;
-        color: var(--color-dark-blue-grey);
-      }
+    }
+  }
+
+  .about__tags {
+    display: grid;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+
+    @include down(tab) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    li {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(6px);
+      border-radius: 9999px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #555; // 은은한 다크그레이
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+
+      // hover 시 살짝만
+      transition: background 0.2s ease;
       &:hover {
-        .major__img {
-          transform: rotate(-15deg) scale(1.3);
+        background: rgba(255, 255, 255, 0.6);
+      }
+    }
+  }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border-radius: 9999px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    .icon-arrow {
+      transition: transform 0.3s ease, stroke 0.3s ease, filter 0.3s ease;
+    }
+
+    // 💜 Dark 배경용
+    &.dark {
+      background: rgba(221, 160, 221, 0.15); // 보라 기운
+      border: 1px solid rgba(221, 160, 221, 0.5);
+      color: #fff;
+
+      .icon-arrow {
+        stroke: #dda0dd;
+      }
+
+      &:hover {
+        border-color: #dda0dd;
+        box-shadow: 0 0 6px rgba(221, 160, 221, 0.6),
+          0 0 16px rgba(221, 160, 221, 0.4);
+        .icon-arrow {
+          transform: translateX(3px);
+          stroke: #ffcbff;
+          filter: drop-shadow(0 0 6px #dda0dd);
+        }
+      }
+    }
+
+    // 🤍 Light 배경용
+    &.light {
+      background: #fff;
+      border: 2px solid #a45cc5; /* 선명한 퍼플 */
+      color: #4a2f5a;
+      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(164, 92, 197, 0.2);
+
+      .icon-arrow {
+        stroke: #a45cc5;
+      }
+
+      &:hover {
+        background: #f9f4fb;
+        box-shadow: 0 0 6px rgba(164, 92, 197, 0.5),
+          0 0 14px rgba(164, 92, 197, 0.3);
+        .icon-arrow {
+          transform: translateX(3px);
+          stroke: #6c2f91;
+          filter: drop-shadow(0 0 4px rgba(164, 92, 197, 0.6));
         }
       }
     }
@@ -682,170 +809,3 @@ $shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
 /* ==================================================
    Skills
 ================================================== */
-#skills {
-  background-color: var(--color-background-black);
-
-  .skills {
-    h2,
-    p {
-      color: var(--color-light-white);
-    }
-    h2 {
-      font-size: 2.4rem;
-    }
-    p {
-      font-size: 1rem;
-    }
-  }
-
-  .skillset {
-    display: flex;
-    background-color: transparent;
-    color: var(--color-light-white);
-    margin: 20px 0;
-    &__title {
-      color: var(--color-white);
-    }
-
-    &__left {
-      flex-basis: 60%;
-      background-color: #34363c;
-      padding: 20px 40px;
-      border-radius: 20px 0 0 20px;
-      box-shadow: 5px 5px 5px -4px rgba(0, 0, 0, 0.46) inset,
-        0 -5px 5px -4px rgba(0, 0, 0, 0.46) inset;
-
-      .skill__section {
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.5s ease, visibility 0.5s;
-        .skill {
-          position: relative;
-          display: flex;
-          align-items: center;
-          margin-bottom: 32px;
-          .icon {
-            width: 40px;
-            margin-right: 10px;
-            img {
-              width: 100%;
-            }
-            .icon__transparent {
-              background-color: var(--color-light-white);
-              border-radius: 8px;
-            }
-          }
-          &__info {
-            position: absolute;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 84%;
-            left: 60px;
-            font-weight: bold;
-            .skill__name {
-              font-size: 14px;
-              color: var(--color-light-white);
-            }
-            .skill__percent {
-              font-size: 14px;
-              color: var(--color-dark-blue-grey);
-            }
-          }
-          &__progressbar {
-            width: 100%;
-            height: 24px;
-            background-color: #ddd;
-            border-radius: 10px;
-            overflow: hidden;
-            .skill__progress {
-              height: 100%;
-              background: rgb(247, 143, 15);
-              background: linear-gradient(
-                90deg,
-                rgba(247, 143, 15, 1) 0%,
-                rgba(255, 179, 0, 1) 48%,
-                rgba(247, 143, 15, 1) 100%,
-                rgba(0, 212, 255, 1) 100%
-              );
-              border-radius: 10px;
-              width: 0;
-              transition: width 1s ease-in-out;
-            }
-          }
-        }
-      }
-    }
-
-    &__right {
-      flex-basis: 40%;
-
-      .skill__uxui {
-        background-color: #282a2f;
-        border-radius: 0 20px 0 0;
-        padding: 20px;
-
-        .card__list {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          padding: 10px;
-          .skill__ability {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            .item__img {
-              position: relative;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 100px;
-              height: 100px;
-              border-radius: 50%;
-              background-color: #34363c;
-              margin: 0 10px;
-              transition: 0.5s;
-              z-index: 1;
-            }
-          }
-
-          .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 4;
-            &__content {
-              max-width: 50%;
-              height: auto;
-              background: white;
-              border-radius: 5px;
-              position: relative;
-              max-height: 80vh;
-              overflow-y: auto;
-              padding-bottom: 20px;
-
-              -ms-overflow-style: none; /* 인터넷 익스플로러 */
-              scrollbar-width: none; /* 파이어폭스 */
-              &::-webkit-scrollbar {
-                display: none;
-              }
-
-              img {
-                width: 300px;
-                height: auto;
-              }
-            }
-          }
-          .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-        }
-      }
-    }
-  }
-}

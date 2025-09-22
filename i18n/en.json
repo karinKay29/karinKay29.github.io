@@ -1,0 +1,26 @@
+{
+  "ui": {
+    "lang-ja": "JP",
+    "lang-en": "EN"
+  },
+  "nav": {
+    "home": "HOME",
+    "about": "ABOUT",
+    "skills": "SKILLS",
+    "works": "WORKS",
+    "contact": "CONTACT"
+  },
+  "home": {
+    "catch": "Crafting user-centered designs <br class='view_sp'>with a focus on clarity and innovation."
+  },
+
+  "about": {
+    "title": "About Me",
+    "intro1": "I focus on web design and coding, with a strong orientation toward the front end.",
+    "intro2": "Beyond delivering requests as-is, I propose user-oriented improvements and refine functionality to create better experiences.",
+    "intro3": "If it leads to better outcomes, I don’t mind investing the time, and I take responsibility to see projects through. I prioritize deadlines and take initiative."
+  },
+  "cta": {
+    "seeWork": "See My Work"
+  }
+}
