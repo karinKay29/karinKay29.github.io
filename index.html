@@ -186,13 +186,14 @@
 
         <!-- 텍스트 블록 -->
         <div class="about__text">
-          <h2 data-i18n="about.title">About Me</h2>
-          <p data-i18n="about.intro1"></p>
-          <p data-i18n="about.intro2"></p>
-          <p data-i18n="about.intro3"></p>
+          <span class="eyebrow">About</span>
+          <h2 data-i18n="about.title" class="scroll-fade">About Me</h2>
+          <p data-i18n="about.intro1" class="scroll-fade"></p>
+          <p data-i18n="about.intro2" class="scroll-fade"></p>
+          <p data-i18n="about.intro3" class="scroll-fade"></p>
 
           <!-- 키워드 태그 -->
-          <ul class="about__tags">
+          <ul class="about__tags scroll-fade">
             <li>#WebDesign</li>
             <li>#Coding</li>
             <li>#UIUX</li>
@@ -219,6 +220,15 @@
             </svg>
           </a>
         </div>
+      </div>
+    </section>
+
+    <section id="skills" class="skill section" data-theme="dark">
+      <div class="section__container skill__container">
+        <span class="eyebrow">Skillset</span>
+        <h2 data-i18n="skills.title" class="scroll-fade"></h2>
+        <p data-i18n="skills.intro" class="sub scroll-fade"></p>
+        <div class="bubble-field" id="bubbleField" aria-hidden="true"></div>
       </div>
     </section>
   </body>

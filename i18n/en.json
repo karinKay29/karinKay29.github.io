@@ -22,5 +22,9 @@
   },
   "cta": {
     "seeWork": "See My Work"
+  },
+  "skills": {
+    "title": "Front-End Skills Bridging Design and Technology",
+    "intro": "Through a variety of client projects, I have been responsible for front-end development and UX design,<br>building practical expertise that bridges design and technology."
   }
 }
